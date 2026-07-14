@@ -56,3 +56,9 @@ print("\n===== USUARIOS RESTANTES =====")
 
 for usuario in dao.obtener_todos():
     print(usuario)
+
+
+"""Desde la raíz del proyecto (`D:\PROYECTO_LUKELIAH`) ejecuta:
+
+```powershell
+python -m pruebas.prueba_usuario_dao"""
