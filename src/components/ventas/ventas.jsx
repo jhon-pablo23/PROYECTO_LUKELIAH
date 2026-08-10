@@ -2,10 +2,10 @@ import { useState } from "react";
 import "./ventas.css";
 
 function Ventas() {
-    const [fecha, setFecha] = useState("");
+
+    const [fecha, setFecha] = useState("2026-07-10");
     const [postreSeleccionado, setPostreSeleccionado] = useState("");
-    const [cantidad, setCantidad] = useState("");
-    const [detalles, setDetalles] = useState([]);
+    const [cantidad, setCantidad] = useState(1);
 
     const postres = [
         {
@@ -25,217 +25,262 @@ function Ventas() {
         }
     ];
 
-    function agregarPostre() {
+    const postre = postres.find(
+        (p) => p.id === Number(postreSeleccionado)
+    );
+
+    const precioUnitario = postre ? postre.precio : 0;
+
+    const total = precioUnitario * Number(cantidad);
+
+    function registrarVenta() {
+
         if (postreSeleccionado === "") {
             alert("Seleccione un postre.");
             return;
         }
 
-        if (cantidad === "" || Number(cantidad) <= 0) {
-            alert("Ingrese una cantidad mayor que cero.");
+        if (cantidad <= 0) {
+            alert("La cantidad debe ser mayor que cero.");
             return;
         }
 
-        const postre = postres.find(
-            (p) => p.id === Number(postreSeleccionado)
-        );
+        alert("Venta registrada correctamente.");
 
-        const nuevoDetalle = {
-            id: Date.now(),
-            postre: postre.nombre,
-            precio: postre.precio,
-            cantidad: Number(cantidad),
-            subtotal: postre.precio * Number(cantidad)
-        };
-
-        setDetalles([...detalles, nuevoDetalle]);
-
-        setPostreSeleccionado("");
-        setCantidad("");
     }
-
-    function eliminarDetalle(id) {
-        setDetalles(
-            detalles.filter((detalle) => detalle.id !== id)
-        );
-    }
-
-    const total = detalles.reduce(
-        (suma, detalle) => suma + detalle.subtotal,
-        0
-    );
 
     return (
         <div className="ventas-container">
 
+            {/* TITULO */}
+
             <div className="ventas-header">
+
                 <div>
-                    <h1>Ventas</h1>
-                    <p>Registro de ventas de postres</p>
+                    <h1>Registrar Venta</h1>
                 </div>
+
             </div>
 
-            <div className="ventas-card">
 
-                <h5>Registrar venta</h5>
+            {/* CONTENIDO PRINCIPAL */}
 
-                <div className="row">
+            <div className="row g-4">
 
-                    <div className="col-md-4 mb-3">
-                        <label className="form-label">
-                            Fecha
-                        </label>
 
-                        <input
-                            type="date"
-                            className="form-control"
-                            value={fecha}
-                            onChange={(e) => setFecha(e.target.value)}
-                        />
-                    </div>
+                {/* FORMULARIO */}
 
-                </div>
+                <div className="col-lg-8">
 
-                <hr />
+                    <div className="ventas-card">
 
-                <h6>Agregar postre</h6>
+                        <div className="row">
 
-                <div className="row align-items-end">
 
-                    <div className="col-md-6 mb-3">
-                        <label className="form-label">
-                            Postre
-                        </label>
+                            {/* FECHA */}
 
-                        <select
-                            className="form-select"
-                            value={postreSeleccionado}
-                            onChange={(e) =>
-                                setPostreSeleccionado(e.target.value)
-                            }
-                        >
-                            <option value="">
-                                Seleccione un postre
-                            </option>
+                            <div className="col-md-6 mb-3">
 
-                            {postres.map((postre) => (
-                                <option
-                                    key={postre.id}
-                                    value={postre.id}
+                                <label className="form-label">
+                                    Fecha
+                                </label>
+
+                                <input
+                                    type="date"
+                                    className="form-control"
+                                    value={fecha}
+                                    onChange={(e) =>
+                                        setFecha(e.target.value)
+                                    }
+                                />
+
+                            </div>
+
+
+                            {/* USUARIO */}
+
+                            <div className="col-md-6 mb-3">
+
+                                <label className="form-label">
+                                    Usuario
+                                </label>
+
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    value="JHON EMERSON ANCHAYHUA PABLO"
+                                    readOnly
+                                />
+
+                            </div>
+
+
+                            {/* POSTRE */}
+
+                            <div className="col-12 mb-3">
+
+                                <label className="form-label">
+                                    Postre
+                                </label>
+
+                                <select
+                                    className="form-select"
+                                    value={postreSeleccionado}
+                                    onChange={(e) =>
+                                        setPostreSeleccionado(e.target.value)
+                                    }
                                 >
-                                    {postre.nombre} - S/ {postre.precio.toFixed(2)}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
 
-                    <div className="col-md-3 mb-3">
-                        <label className="form-label">
-                            Cantidad
-                        </label>
+                                    <option value="">
+                                        Seleccionar postre...
+                                    </option>
 
-                        <input
-                            type="number"
-                            min="1"
-                            className="form-control"
-                            value={cantidad}
-                            onChange={(e) =>
-                                setCantidad(e.target.value)
-                            }
-                        />
-                    </div>
+                                    {postres.map((postre) => (
 
-                    <div className="col-md-3 mb-3">
-                        <button
-                            className="btn btn-primary ventas-btn-agregar"
-                            onClick={agregarPostre}
-                        >
-                            + Agregar
-                        </button>
+                                        <option
+                                            key={postre.id}
+                                            value={postre.id}
+                                        >
+                                            {postre.nombre}
+                                        </option>
+
+                                    ))}
+
+                                </select>
+
+                            </div>
+
+
+                            {/* CANTIDAD */}
+
+                            <div className="col-md-6 mb-3">
+
+                                <label className="form-label">
+                                    Cantidad
+                                </label>
+
+                                <input
+                                    type="number"
+                                    min="1"
+                                    className="form-control"
+                                    value={cantidad}
+                                    onChange={(e) =>
+                                        setCantidad(e.target.value)
+                                    }
+                                />
+
+                            </div>
+
+
+                            {/* PRECIO UNITARIO */}
+
+                            <div className="col-md-6 mb-3">
+
+                                <label className="form-label">
+                                    Precio unitario
+                                </label>
+
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    value={
+                                        postre
+                                            ? `S/ ${precioUnitario.toFixed(2)}`
+                                            : "—"
+                                    }
+                                    readOnly
+                                />
+
+                            </div>
+
+
+                            {/* BOTON */}
+
+                            <div className="col-12">
+
+                                <button
+                                    className="btn ventas-btn-registrar"
+                                    onClick={registrarVenta}
+                                    disabled={postreSeleccionado === ""}
+                                >
+                                    Registrar Venta
+                                </button>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
                 </div>
 
-            </div>
 
-            <div className="ventas-card">
+                {/* RESUMEN */}
 
-                <h5>Detalle de venta</h5>
+                <div className="col-lg-4">
 
-                <div className="table-responsive">
+                    <div className="ventas-card ventas-resumen">
 
-                    <table className="table ventas-table">
+                        <h6>
+                            RESUMEN
+                        </h6>
 
-                        <thead>
-                            <tr>
-                                <th>Postre</th>
-                                <th>Cantidad</th>
-                                <th>Subtotal</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
 
-                        <tbody>
+                        <div className="resumen-fila">
 
-                            {detalles.length === 0 ? (
+                            <span>
+                                Postre
+                            </span>
 
-                                <tr>
-                                    <td
-                                        colSpan="4"
-                                        className="ventas-vacio"
-                                    >
-                                        No hay postres agregados
-                                    </td>
-                                </tr>
+                            <strong>
+                                {postre ? postre.nombre : "—"}
+                            </strong>
 
-                            ) : (
+                        </div>
 
-                                detalles.map((detalle) => (
 
-                                    <tr key={detalle.id}>
+                        <div className="resumen-fila">
 
-                                        <td>
-                                            {detalle.postre}
-                                        </td>
+                            <span>
+                                Cantidad
+                            </span>
 
-                                        <td>
-                                            {detalle.cantidad}
-                                        </td>
+                            <strong>
+                                {cantidad}
+                            </strong>
 
-                                        <td>
-                                            S/ {detalle.subtotal.toFixed(2)}
-                                        </td>
+                        </div>
 
-                                        <td>
-                                            <button
-                                                className="btn btn-sm btn-danger"
-                                                onClick={() =>
-                                                    eliminarDetalle(detalle.id)
-                                                }
-                                            >
-                                                Eliminar
-                                            </button>
-                                        </td>
 
-                                    </tr>
+                        <div className="resumen-fila">
 
-                                ))
+                            <span>
+                                Precio unit.
+                            </span>
 
-                            )}
+                            <strong>
+                                {postre
+                                    ? `S/ ${precioUnitario.toFixed(2)}`
+                                    : "—"
+                                }
+                            </strong>
 
-                        </tbody>
+                        </div>
 
-                    </table>
 
-                </div>
+                        <div className="resumen-total">
 
-                <div className="ventas-total">
+                            <span>
+                                Total
+                            </span>
 
-                    <span>Total</span>
+                            <strong>
+                                S/ {total.toFixed(2)}
+                            </strong>
 
-                    <strong>
-                        S/ {total.toFixed(2)}
-                    </strong>
+                        </div>
+
+                    </div>
 
                 </div>
 

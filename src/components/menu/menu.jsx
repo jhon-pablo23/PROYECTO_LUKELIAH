@@ -32,9 +32,9 @@ function Menu() {
                     Postres
                 </Link>
 
-                <a href="#" className="nav-link text-white">
+                <Link to="/ventas" className="nav-link text-white">
                     Ventas
-                </a>
+                </Link>
 
                 <a href="#" className="nav-link text-white">
                     Catálogo Público
