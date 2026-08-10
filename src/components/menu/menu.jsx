@@ -1,0 +1,53 @@
+import { Link } from "react-router-dom";
+
+function Menu() {
+    return (
+        <div
+            className="d-flex flex-column text-white p-3 min-vh-100"
+            style={{
+                width: "240px",
+                backgroundColor: "#1f426b"
+            }}
+        >
+
+            <h3 className="text-center mb-4">
+                LUKELIAH
+            </h3>
+
+            <nav className="nav flex-column">
+
+                <Link to="/inicio" className="nav-link text-white">
+                    Dashboard
+                </Link>
+
+                <Link to="/usuarios" className="nav-link text-white">
+                    Usuarios
+                </Link>
+
+                <a href="#" className="nav-link text-white">
+                    Ingredientes
+                </a>
+
+                <a href="#" className="nav-link text-white">
+                    Recetas
+                </a>
+
+                <a href="#" className="nav-link text-white">
+                    Postres
+                </a>
+
+                <a href="#" className="nav-link text-white">
+                    Ventas
+                </a>
+
+                <a href="#" className="nav-link text-white">
+                    Catálogo Público
+                </a>
+
+            </nav>
+
+        </div>
+    );
+}
+
+export default Menu;

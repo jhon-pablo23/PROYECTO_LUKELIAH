@@ -1,19 +1,43 @@
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+import Menu from "./components/menu/menu";
+import Panel from "./components/panel/panel";
+import Usuarios from "./components/usuarios/usuarios";
+
 function App() {
   return (
-    <div className="container mt-5">
-      <h1 className="text-center">LUKELIAH</h1>
+    <BrowserRouter>
 
-      <div className="card mt-4">
-        <div className="card-body text-center">
-          <h3>Frontend funcionando</h3>
-          <p>React y Bootstrap están funcionando correctamente.</p>
+      <div className="d-flex min-vh-100">
 
-          <button className="btn btn-primary">
-            LUKELIAH
-          </button>
-        </div>
+        <Menu />
+
+        <main className="flex-grow-1 p-4">
+
+          <Routes>
+
+            <Route
+              path="/"
+              element={<Navigate to="/inicio" />}
+            />
+
+            <Route
+              path="/inicio"
+              element={<Panel />}
+            />
+
+            <Route
+              path="/usuarios"
+              element={<Usuarios />}
+            />
+
+          </Routes>
+
+        </main>
+
       </div>
-    </div>
+
+    </BrowserRouter>
   );
 }
 
