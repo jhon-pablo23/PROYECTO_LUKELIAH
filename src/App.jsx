@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
+import Login from "./components/login/login";
 import Menu from "./components/menu/menu";
 import Panel from "./components/panel/panel";
 import Usuarios from "./components/usuarios/usuarios";
@@ -9,6 +10,7 @@ import Recetas from "./components/recetas/recetas";
 import Postres from "./components/postres/postres";
 import Ventas from "./components/ventas/ventas";
 import Catalogo from "./components/catalogo/catalogo";
+
 
 function App() {
 
@@ -153,6 +155,11 @@ function App() {
           <main className="flex-grow-1 p-4">
 
             <Routes>
+
+              <Route
+                path="/login"
+                element={<Login />}
+              />
 
               <Route
                 path="/"
