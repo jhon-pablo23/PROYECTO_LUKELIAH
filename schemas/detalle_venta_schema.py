@@ -1,15 +1,11 @@
 from pydantic import BaseModel, field_validator
-
-
 # ----------------------------------------------------------------------
 # SCHEMAS PYDANTIC - DetalleVenta
-#
 # Define y valida los datos correspondientes a los postres
 # incluidos dentro de una venta.
 # ----------------------------------------------------------------------
 
-
-# Línea que se envía al registrar una venta
+# Datos de cada postre que React envía al registrar una venta.
 class DetalleVentaCrear(BaseModel):
     id_postre: int
     cantidad: int
@@ -18,11 +14,12 @@ class DetalleVentaCrear(BaseModel):
     @classmethod
     def validar_cantidad(cls, valor):
         if valor <= 0:
-            raise ValueError("La cantidad debe ser mayor a 0")
+            raise ValueError(
+                "La cantidad debe ser mayor a 0"
+            )
         return valor
 
-
-# Lo que la API devuelve de cada detalle de venta
+# Datos que la API devuelve de cada detalle.
 class DetalleVentaRespuesta(BaseModel):
     id_detalle: int
     id_postre: int
