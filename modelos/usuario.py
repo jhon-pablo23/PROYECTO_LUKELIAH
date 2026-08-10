@@ -1,14 +1,10 @@
 class Usuario:
-
-    def __init__(self, nombre, correo, contrasena):
-        self.id_usuario = None
+    def __init__(self, nombre, correo, contrasena, id_usuario=None):
+        self.id_usuario = id_usuario
         self.nombre = nombre
         self.correo = correo
         self.contrasena = contrasena
 
-    def __str__(self):
-        return (
-            f"[{self.id_usuario}] "
-            f"{self.nombre} | "
-            f"{self.correo}"
-        )
+    def to_dict(self):
+        # Nunca se devuelve la contraseña al cliente
+        return {"id_usuario": self.id_usuario, "nombre": self.nombre, "correo": self.correo}
