@@ -28,9 +28,9 @@ function Menu() {
                     Recetas
                 </Link>
 
-                <a href="#" className="nav-link text-white">
+                <Link to="/postres" className="nav-link text-white">
                     Postres
-                </a>
+                </Link>
 
                 <a href="#" className="nav-link text-white">
                     Ventas

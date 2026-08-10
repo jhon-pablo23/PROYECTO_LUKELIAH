@@ -1,0 +1,277 @@
+.postres-container {
+    padding: 30px;
+    background-color: #f5f7fa;
+    min-height: calc(100vh - 70px);
+}
+
+.postres-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.postres-header h2 {
+    margin: 0;
+    color: #222222;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.postres-header p {
+    margin: 5px 0 0;
+    color: #666666;
+    font-size: 14px;
+}
+
+.btn-nuevo-postre {
+    border: none;
+    background-color: #1f426b;
+    color: #ffffff;
+    padding: 11px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-nuevo-postre:hover {
+    background-color: #173653;
+}
+
+.postre-formulario {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formulario-titulo {
+    margin-bottom: 20px;
+}
+
+.formulario-titulo h3 {
+    margin: 0;
+    color: #222222;
+    font-size: 20px;
+}
+
+.formulario-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    margin-bottom: 7px;
+    color: #222222;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: #1f426b;
+}
+
+.campo-precio {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.campo-precio span {
+    padding: 10px 12px;
+    background-color: #f5f7fa;
+    color: #222222;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.campo-precio input {
+    border: none;
+    border-radius: 0;
+}
+
+.formulario-nota {
+    margin-top: 18px;
+    padding: 12px 15px;
+    background-color: #f5f7fa;
+    border-radius: 6px;
+    color: #666666;
+    font-size: 13px;
+}
+
+.formulario-botones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.btn-guardar-postre {
+    border: none;
+    background-color: #1f426b;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-guardar-postre:hover {
+    background-color: #173653;
+}
+
+.btn-cancelar-postre {
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
+    color: #666666;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-cancelar-postre:hover {
+    background-color: #f5f7fa;
+}
+
+.postres-tabla {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tabla-titulo {
+    padding: 20px 22px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tabla-titulo h3 {
+    margin: 0;
+    color: #222222;
+    font-size: 18px;
+}
+
+.tabla-contenedor {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.postres-tabla table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.postres-tabla th {
+    background-color: #f5f7fa;
+    color: #222222;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.postres-tabla td {
+    padding: 14px 16px;
+    color: #444444;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.postres-tabla tbody tr:hover {
+    background-color: #fafafa;
+}
+
+.imagen-nombre {
+    color: #666666;
+    font-size: 13px;
+}
+
+.sin-imagen {
+    color: #999999;
+    font-size: 13px;
+}
+
+.acciones {
+    white-space: nowrap;
+}
+
+.btn-editar-postre {
+    border: none;
+    background-color: #ffc107;
+    color: #222222;
+    padding: 7px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-right: 7px;
+}
+
+.btn-editar-postre:hover {
+    background-color: #e0a800;
+}
+
+.btn-eliminar-postre {
+    border: none;
+    background-color: #dc3545;
+    color: #ffffff;
+    padding: 7px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-eliminar-postre:hover {
+    background-color: #bb2d3b;
+}
+
+.tabla-vacia {
+    text-align: center !important;
+    color: #666666 !important;
+    padding: 30px !important;
+}
+
+@media (max-width: 768px) {
+
+    .postres-container {
+        padding: 20px;
+    }
+
+    .postres-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .formulario-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario-botones {
+        justify-content: flex-start;
+    }
+
+}

@@ -6,6 +6,7 @@ import Panel from "./components/panel/panel";
 import Usuarios from "./components/usuarios/usuarios";
 import Ingredientes from "./components/ingredientes/ingredientes";
 import Recetas from "./components/recetas/recetas";
+import Postres from "./components/postres/postres";
 
 function App() {
 
@@ -174,6 +175,11 @@ function App() {
               <Route
                 path="/recetas"
                 element={<Recetas />}
+              />
+
+              <Route
+                path="/postres"
+                element={<Postres />}
               />
 
             </Routes>
