@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Menu from "./components/menu/menu";
 import Panel from "./components/panel/panel";
 import Usuarios from "./components/usuarios/usuarios";
+import Ingredientes from "./components/ingredientes/ingredientes";
 
 function App() {
 
@@ -162,6 +163,11 @@ function App() {
               <Route
                 path="/usuarios"
                 element={<Usuarios />}
+              />
+
+              <Route
+                path="/ingredientes"
+                element={<Ingredientes />}
               />
 
             </Routes>

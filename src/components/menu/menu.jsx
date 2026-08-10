@@ -20,9 +20,9 @@ function Menu() {
                     Usuarios
                 </Link>
 
-                <a href="#" className="nav-link text-white">
+                <Link to="/ingredientes" className="nav-link text-white">
                     Ingredientes
-                </a>
+                </Link>
 
                 <a href="#" className="nav-link text-white">
                     Recetas
