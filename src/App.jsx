@@ -5,6 +5,7 @@ import Menu from "./components/menu/menu";
 import Panel from "./components/panel/panel";
 import Usuarios from "./components/usuarios/usuarios";
 import Ingredientes from "./components/ingredientes/ingredientes";
+import Recetas from "./components/recetas/recetas";
 
 function App() {
 
@@ -168,6 +169,11 @@ function App() {
               <Route
                 path="/ingredientes"
                 element={<Ingredientes />}
+              />
+
+              <Route
+                path="/recetas"
+                element={<Recetas />}
               />
 
             </Routes>

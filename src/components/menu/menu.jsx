@@ -24,9 +24,9 @@ function Menu() {
                     Ingredientes
                 </Link>
 
-                <a href="#" className="nav-link text-white">
+                <Link to="/recetas" className="nav-link text-white">
                     Recetas
-                </a>
+                </Link>
 
                 <a href="#" className="nav-link text-white">
                     Postres

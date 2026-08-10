@@ -1,0 +1,360 @@
+.recetas-container {
+    padding: 30px;
+    background-color: #f5f7fa;
+    min-height: calc(100vh - 70px);
+}
+
+.recetas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.recetas-header h2 {
+    margin: 0;
+    color: #222222;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.recetas-header p {
+    margin: 5px 0 0;
+    color: #666666;
+    font-size: 14px;
+}
+
+.btn-nueva-receta {
+    border: none;
+    background-color: #1f426b;
+    color: #ffffff;
+    padding: 11px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-nueva-receta:hover {
+    background-color: #173653;
+}
+
+.receta-formulario {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formulario-titulo {
+    margin-bottom: 20px;
+}
+
+.formulario-titulo h3 {
+    margin: 0;
+    color: #222222;
+    font-size: 20px;
+}
+
+.formulario-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    margin-bottom: 7px;
+    color: #222222;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+    background-color: #ffffff;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    border-color: #1f426b;
+}
+
+.procedimiento-campo {
+    margin-top: 18px;
+}
+
+.campo textarea {
+    resize: vertical;
+}
+
+.ingredientes-seccion {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.ingredientes-seccion h4 {
+    margin: 0 0 18px;
+    color: #222222;
+    font-size: 18px;
+}
+
+.ingrediente-agregar {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr auto;
+    gap: 15px;
+    align-items: end;
+}
+
+.boton-agregar-contenedor {
+    display: flex;
+    align-items: flex-end;
+}
+
+.btn-agregar-ingrediente {
+    border: none;
+    background-color: #1f426b;
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-agregar-ingrediente:hover {
+    background-color: #173653;
+}
+
+.ingredientes-lista {
+    margin-top: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.ingredientes-lista table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ingredientes-lista th {
+    background-color: #f5f7fa;
+    color: #222222;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.ingredientes-lista td {
+    padding: 12px 15px;
+    color: #444444;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.ingredientes-lista tr:last-child td {
+    border-bottom: none;
+}
+
+.btn-eliminar-ingrediente {
+    border: none;
+    background-color: #dc3545;
+    color: #ffffff;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-eliminar-ingrediente:hover {
+    background-color: #bb2d3b;
+}
+
+.sin-ingredientes {
+    padding: 18px;
+    text-align: center;
+    color: #666666;
+    font-size: 14px;
+}
+
+.formulario-botones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.btn-guardar-receta {
+    border: none;
+    background-color: #1f426b;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-guardar-receta:hover {
+    background-color: #173653;
+}
+
+.btn-cancelar-receta {
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
+    color: #666666;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-cancelar-receta:hover {
+    background-color: #f5f7fa;
+}
+
+.recetas-tabla {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tabla-titulo {
+    padding: 20px 22px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tabla-titulo h3 {
+    margin: 0;
+    color: #222222;
+    font-size: 18px;
+}
+
+.tabla-contenedor {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.recetas-tabla table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.recetas-tabla th {
+    background-color: #f5f7fa;
+    color: #222222;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.recetas-tabla td {
+    padding: 14px 16px;
+    color: #444444;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.recetas-tabla tbody tr:hover {
+    background-color: #fafafa;
+}
+
+.procedimiento-tabla {
+    max-width: 400px;
+}
+
+.acciones {
+    white-space: nowrap;
+}
+
+.btn-editar-receta {
+    border: none;
+    background-color: #ffc107;
+    color: #222222;
+    padding: 7px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-right: 7px;
+}
+
+.btn-editar-receta:hover {
+    background-color: #e0a800;
+}
+
+.btn-eliminar-receta {
+    border: none;
+    background-color: #dc3545;
+    color: #ffffff;
+    padding: 7px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-eliminar-receta:hover {
+    background-color: #bb2d3b;
+}
+
+.tabla-vacia {
+    text-align: center !important;
+    color: #666666 !important;
+    padding: 30px !important;
+}
+
+@media (max-width: 900px) {
+
+    .ingrediente-agregar {
+        grid-template-columns: 1fr;
+    }
+
+    .boton-agregar-contenedor {
+        align-items: stretch;
+    }
+
+    .btn-agregar-ingrediente {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .recetas-container {
+        padding: 20px;
+    }
+
+    .recetas-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .formulario-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario-botones {
+        justify-content: flex-start;
+    }
+
+}
