@@ -4,11 +4,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from config.base_datos import inicializar
 from routers import usuario, ingrediente, receta, postre, venta
 
+
 app = FastAPI(
     title="LUKELIAH",
     version="1.0",
     description="API REST del sistema LUKELIAH"
 )
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -20,13 +22,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+# Crea las tablas solamente si todavía no existen.
 inicializar()
 
+
+# Registra los routers de cada módulo.
 app.include_router(usuario.router)
 app.include_router(ingrediente.router)
 app.include_router(receta.router)
 app.include_router(postre.router)
 app.include_router(venta.router)
+
 
 @app.get("/")
 def inicio():
