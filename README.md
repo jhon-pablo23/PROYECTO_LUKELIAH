@@ -23,7 +23,7 @@
 | Integrante | Responsabilidad |
 |---|---|
 | **Patricia Cuaquira Adco** | Backend |
-| **Nombre del integrante** | Frontend |
+| **Jhon Emerson Anchayhua Pablo** | Frontend |
 
 ---
 
