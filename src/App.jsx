@@ -8,6 +8,7 @@ import Ingredientes from "./components/ingredientes/ingredientes";
 import Recetas from "./components/recetas/recetas";
 import Postres from "./components/postres/postres";
 import Ventas from "./components/ventas/ventas";
+import Catalogo from "./components/catalogo/catalogo";
 
 function App() {
 
@@ -186,6 +187,11 @@ function App() {
               <Route
                 path="/ventas"
                 element={<Ventas />}
+              />
+
+              <Route
+                path="/catalogo"
+                element={<Catalogo />}
               />
 
             </Routes>

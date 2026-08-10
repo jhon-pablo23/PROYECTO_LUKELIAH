@@ -1,0 +1,64 @@
+.catalogo-container {
+    padding: 30px;
+    background-color: #f5f7fa;
+    min-height: calc(100vh - 70px);
+}
+
+.catalogo-header {
+    margin-bottom: 30px;
+}
+
+.catalogo-header h1 {
+    color: #222222;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.catalogo-header p {
+    color: #666666;
+    margin: 0;
+}
+
+.catalogo-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.catalogo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.catalogo-imagen {
+    height: 190px;
+    background-color: #eef2f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8a96a3;
+    font-size: 14px;
+}
+
+.catalogo-info {
+    padding: 18px;
+}
+
+.catalogo-info h5 {
+    color: #222222;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.catalogo-info p {
+    color: #1f426b;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}

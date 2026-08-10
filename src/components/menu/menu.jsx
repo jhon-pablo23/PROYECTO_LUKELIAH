@@ -36,9 +36,9 @@ function Menu() {
                     Ventas
                 </Link>
 
-                <a href="#" className="nav-link text-white">
+                <Link to="/catalogo" className="nav-link text-white">
                     Catálogo Público
-                </a>
+                </Link>
 
             </nav>
 
