@@ -1,65 +1,69 @@
+from config.base_datos import obtener_conexion
 from modelos.ingrediente import Ingrediente
+
+class IngredienteNoEncontradoError(Exception):
+    def __init__(self, id_ingrediente):
+        super().__init__(f"Ingrediente ID={id_ingrediente} no encontrado")
 
 
 class IngredienteDAO:
-
-    def __init__(self):
-        self.__bd = []
-        self.__cid = 1
-
-    def insertar(self, ingrediente):
-        ingrediente.id_ingrediente = self.__cid
-        self.__cid += 1
-        self.__bd.append(ingrediente)
-        return ingrediente
+    def obtener_todos(self):
+        conn = obtener_conexion()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM ingrediente ORDER BY id_ingrediente")
+        filas = cursor.fetchall()
+        conn.close()
+        return filas
 
     def buscar_por_id(self, id_ingrediente):
-        for ingrediente in self.__bd:
-            if ingrediente.id_ingrediente == id_ingrediente:
-                return ingrediente
+        conn = obtener_conexion()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM ingrediente WHERE id_ingrediente = %s", (id_ingrediente,))
+        fila = cursor.fetchone()
+        conn.close()
+        return fila
 
-        return None
+    def insertar(self, ingrediente):
+        conn = obtener_conexion()
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO ingrediente (nombre, unidad_medida, stock_actual, stock_minimo, costo) "
+            "VALUES (%s, %s, %s, %s, %s) RETURNING id_ingrediente",
+            (ingrediente.nombre, ingrediente.unidad_medida, ingrediente.stock_actual,
+            ingrediente.stock_minimo, ingrediente.costo),
+        )
+        ingrediente.id_ingrediente = cursor.fetchone()["id_ingrediente"]
+        conn.commit()
+        conn.close()
+        return ingrediente
 
-    def obtener_todos(self):
-        return self.__bd
-
-    def actualizar(
-        self,
-        id_ingrediente,
-        nombre=None,
-        unidad_medida=None,
-        stock_actual=None,
-        stock_minimo=None,
-        costo=None,
-    ):
-        ingrediente = self.buscar_por_id(id_ingrediente)
-
-        if ingrediente:
-
-            if nombre:
-                ingrediente.nombre = nombre
-
-            if unidad_medida:
-                ingrediente.unidad_medida = unidad_medida
-
-            if stock_actual is not None:
-                ingrediente.stock_actual = stock_actual
-
-            if stock_minimo is not None:
-                ingrediente.stock_minimo = stock_minimo
-
-            if costo is not None:
-                ingrediente.costo = costo
-
-            return ingrediente
-
-        return None
+    def actualizar(self, id_ingrediente, cambios: dict):
+        actual = self.buscar_por_id(id_ingrediente)
+        if not actual:
+            raise IngredienteNoEncontradoError(id_ingrediente)
+        datos = {**actual, **cambios}
+        conn = obtener_conexion()
+        cursor = conn.cursor()
+        cursor.execute(
+            "UPDATE ingrediente SET nombre = %s, unidad_medida = %s, "
+            "stock_actual = %s, stock_minimo = %s, costo = %s "
+            "WHERE id_ingrediente = %s RETURNING *",
+            (datos["nombre"], datos["unidad_medida"], datos["stock_actual"],
+            datos["stock_minimo"], datos["costo"], id_ingrediente),
+        )
+        fila = cursor.fetchone()
+        conn.commit()
+        conn.close()
+        return fila
 
     def eliminar(self, id_ingrediente):
-        ingrediente = self.buscar_por_id(id_ingrediente)
-
-        if ingrediente:
-            self.__bd.remove(ingrediente)
-            return True
-
-        return False
+        if not self.buscar_por_id(id_ingrediente):
+            raise IngredienteNoEncontradoError(id_ingrediente)
+        conn = obtener_conexion()
+        cursor = conn.cursor()
+        # OJO: si este ingrediente ya está usado en receta_ingrediente, esto va a fallar
+        # por la llave foránea (no tiene ON DELETE CASCADE). Es correcto que falle:
+        # no deberías poder borrar un ingrediente que una receta todavía usa.
+        cursor.execute("DELETE FROM ingrediente WHERE id_ingrediente = %s", (id_ingrediente,))
+        conn.commit()
+        conn.close()
