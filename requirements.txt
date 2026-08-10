@@ -1,0 +1,20 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# DEPENDENCIAS — LUKELIAH (FastAPI + PostgreSQL)
+# Instalar con: python -m pip install -r requirements.txt
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Framework web para construir la API REST
+fastapi==0.115.5
+
+# Servidor ASGI para ejecutar FastAPI
+# Ejecutar con: python -m uvicorn main:app --reload
+uvicorn[standard]==0.32.0
+
+# Librería para conectar Python con PostgreSQL
+psycopg2-binary==2.9.12
+
+# Permite cargar las variables de configuración desde el archivo .env
+python-dotenv==1.2.2
+
+# Validación de datos utilizados por los schemas de la API
+pydantic==2.12.5
