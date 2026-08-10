@@ -1,13 +1,12 @@
 class Venta:
-
-    def __init__(self, fecha, total):
-        self.id_venta = None
+    def __init__(self, fecha=None, total=0, id_venta=None):
+        self.id_venta = id_venta
         self.fecha = fecha
         self.total = total
 
-    def __str__(self):
-        return (
-            f"[{self.id_venta}] "
-            f"Fecha: {self.fecha} | "
-            f"Total: S/ {self.total:.2f}"
-        )
+    def to_dict(self):
+        return {
+            "id_venta": self.id_venta,
+            "fecha": self.fecha,
+            "total": self.total,
+        }
