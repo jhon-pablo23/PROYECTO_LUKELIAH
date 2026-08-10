@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation
+} from "react-router-dom";
 
 import Login from "./components/login/login";
 import Menu from "./components/menu/menu";
@@ -12,13 +18,14 @@ import Ventas from "./components/ventas/ventas";
 import Catalogo from "./components/catalogo/catalogo";
 
 
-function App() {
+function Aplicacion() {
 
   const [hora, setHora] = useState("");
 
   useEffect(() => {
 
     function actualizarHora() {
+
       const ahora = new Date();
 
       setHora(
@@ -39,12 +46,18 @@ function App() {
   }, []);
 
 
+  const location = useLocation();
+
+  const esLogin = location.pathname === "/login";
+
+
   return (
-    <BrowserRouter>
 
-      <div className="min-vh-100">
+    <div className="min-vh-100">
 
-        {/* ENCABEZADO SUPERIOR */}
+      {/* ENCABEZADO SUPERIOR */}
+
+      {!esLogin && (
 
         <header
           className="d-flex justify-content-between align-items-center px-4"
@@ -58,6 +71,7 @@ function App() {
           {/* LOGO */}
 
           <div>
+
             <h4
               className="mb-0 fw-bold"
               style={{
@@ -66,6 +80,7 @@ function App() {
             >
               LUKELIAH
             </h4>
+
           </div>
 
 
@@ -145,72 +160,121 @@ function App() {
 
         </header>
 
+      )}
 
-        {/* MENU + CONTENIDO */}
 
-        <div className="d-flex">
+      {/* MENU + CONTENIDO */}
 
-          <Menu />
+      <div className={esLogin ? "" : "d-flex"}>
 
-          <main className="flex-grow-1 p-4">
+        {/* MENU */}
 
-            <Routes>
+        {!esLogin && <Menu />}
 
-              <Route
-                path="/login"
-                element={<Login />}
-              />
 
-              <Route
-                path="/"
-                element={<Navigate to="/inicio" />}
-              />
+        {/* CONTENIDO */}
 
-              <Route
-                path="/inicio"
-                element={<Panel />}
-              />
+        <main
+          className={esLogin ? "" : "flex-grow-1 p-4"}
+        >
 
-              <Route
-                path="/usuarios"
-                element={<Usuarios />}
-              />
+          <Routes>
 
-              <Route
-                path="/ingredientes"
-                element={<Ingredientes />}
-              />
+            {/* PAGINA INICIAL */}
 
-              <Route
-                path="/recetas"
-                element={<Recetas />}
-              />
+            <Route
+              path="/"
+              element={<Navigate to="/login" />}
+            />
 
-              <Route
-                path="/postres"
-                element={<Postres />}
-              />
 
-              <Route
-                path="/ventas"
-                element={<Ventas />}
-              />
+            {/* LOGIN */}
 
-              <Route
-                path="/catalogo"
-                element={<Catalogo />}
-              />
+            <Route
+              path="/login"
+              element={<Login />}
+            />
 
-            </Routes>
 
-          </main>
+            {/* DASHBOARD */}
 
-        </div>
+            <Route
+              path="/inicio"
+              element={<Panel />}
+            />
+
+
+            {/* USUARIOS */}
+
+            <Route
+              path="/usuarios"
+              element={<Usuarios />}
+            />
+
+
+            {/* INGREDIENTES */}
+
+            <Route
+              path="/ingredientes"
+              element={<Ingredientes />}
+            />
+
+
+            {/* RECETAS */}
+
+            <Route
+              path="/recetas"
+              element={<Recetas />}
+            />
+
+
+            {/* POSTRES */}
+
+            <Route
+              path="/postres"
+              element={<Postres />}
+            />
+
+
+            {/* VENTAS */}
+
+            <Route
+              path="/ventas"
+              element={<Ventas />}
+            />
+
+
+            {/* CATALOGO PUBLICO */}
+
+            <Route
+              path="/catalogo"
+              element={<Catalogo />}
+            />
+
+          </Routes>
+
+        </main>
 
       </div>
 
-    </BrowserRouter>
+    </div>
+
   );
 }
+
+
+function App() {
+
+  return (
+
+    <BrowserRouter>
+
+      <Aplicacion />
+
+    </BrowserRouter>
+
+  );
+}
+
 
 export default App;

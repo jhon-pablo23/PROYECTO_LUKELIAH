@@ -34,7 +34,7 @@ function Login() {
                 <div className="login-logo">
 
                     <div className="login-logo-icon">
-                        ♨
+
                     </div>
 
                     <span>
