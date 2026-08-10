@@ -10,10 +10,6 @@ function Menu() {
             }}
         >
 
-            <h3 className="text-center mb-4">
-                LUKELIAH
-            </h3>
-
             <nav className="nav flex-column">
 
                 <Link to="/inicio" className="nav-link text-white">
