@@ -1,32 +1,25 @@
+import { useEffect, useState } from "react";
+import api from "../../api/axios";
 import "./catalogo.css";
 
 function Catalogo() {
 
-    const postres = [
-        {
-            id: 1,
-            nombre: "Torta de Chocolate",
-            precio: 65.00
-        },
-        {
-            id: 2,
-            nombre: "Cheesecake",
-            precio: 45.00
-        },
-        {
-            id: 3,
-            nombre: "Brownie",
-            precio: 18.00
-        },
-        {
-            id: 4,
-            nombre: "Torta de Fresa",
-            precio: 55.00
+    const [postres, setPostres] = useState([]);
+
+    useEffect(() => {
+        cargarPostres();
+    }, []);
+
+    async function cargarPostres() {
+        try {
+            const respuesta = await api.get("/postres/");
+            setPostres(respuesta.data);
+        } catch (error) {
+            console.error("Error al cargar postres:", error);
         }
-    ];
+    }
 
     return (
-
         <div className="catalogo">
 
             {/* ENCABEZADO */}
@@ -68,10 +61,13 @@ function Catalogo() {
 
                     <div
                         className="col-md-6 col-lg-4 col-xl-3"
-                        key={postre.id}
+                        key={postre.id_postre}
                     >
 
                         <div className="catalogo-card">
+
+
+                            {/* IMAGEN */}
 
                             <div className="catalogo-imagen">
 
@@ -81,6 +77,9 @@ function Catalogo() {
 
                             </div>
 
+
+                            {/* INFORMACION */}
+
                             <div className="catalogo-info">
 
                                 <h5>
@@ -88,7 +87,7 @@ function Catalogo() {
                                 </h5>
 
                                 <p>
-                                    S/ {postre.precio.toFixed(2)}
+                                    S/ {Number(postre.precio).toFixed(2)}
                                 </p>
 
                             </div>
