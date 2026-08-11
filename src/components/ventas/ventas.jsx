@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import api from "../../api/axios";
 import "./ventas.css";
 
 function Ventas() {
@@ -6,30 +7,26 @@ function Ventas() {
     const [fecha, setFecha] = useState("2026-07-10");
     const [postreSeleccionado, setPostreSeleccionado] = useState("");
     const [cantidad, setCantidad] = useState(1);
+    const [postres, setPostres] = useState([]);
 
-    const postres = [
-        {
-            id: 1,
-            nombre: "Torta de Chocolate",
-            precio: 65.00
-        },
-        {
-            id: 2,
-            nombre: "Cheesecake",
-            precio: 45.00
-        },
-        {
-            id: 3,
-            nombre: "Brownie",
-            precio: 18.00
+    useEffect(() => {
+        cargarPostres();
+    }, []);
+
+    async function cargarPostres() {
+        try {
+            const respuesta = await api.get("/postres/");
+            setPostres(respuesta.data);
+        } catch (error) {
+            console.error("Error al cargar postres:", error);
         }
-    ];
+    }
 
     const postre = postres.find(
-        (p) => p.id === Number(postreSeleccionado)
+        (p) => p.id_postre === Number(postreSeleccionado)
     );
 
-    const precioUnitario = postre ? postre.precio : 0;
+    const precioUnitario = postre ? Number(postre.precio) : 0;
 
     const total = precioUnitario * Number(cantidad);
 
@@ -46,7 +43,6 @@ function Ventas() {
         }
 
         alert("Venta registrada correctamente.");
-
     }
 
     return (
@@ -89,9 +85,7 @@ function Ventas() {
                                     type="date"
                                     className="form-control"
                                     value={fecha}
-                                    onChange={(e) =>
-                                        setFecha(e.target.value)
-                                    }
+                                    onChange={(e) => setFecha(e.target.value)}
                                 />
 
                             </div>
@@ -117,7 +111,7 @@ function Ventas() {
 
                             {/* POSTRE */}
 
-                            <div className="col-12 mb-3">
+                            <div className="col-md-8 mb-3">
 
                                 <label className="form-label">
                                     Postre
@@ -136,14 +130,12 @@ function Ventas() {
                                     </option>
 
                                     {postres.map((postre) => (
-
                                         <option
-                                            key={postre.id}
-                                            value={postre.id}
+                                            key={postre.id_postre}
+                                            value={postre.id_postre}
                                         >
                                             {postre.nombre}
                                         </option>
-
                                     ))}
 
                                 </select>
@@ -153,7 +145,7 @@ function Ventas() {
 
                             {/* CANTIDAD */}
 
-                            <div className="col-md-6 mb-3">
+                            <div className="col-md-4 mb-3">
 
                                 <label className="form-label">
                                     Cantidad
@@ -161,34 +153,12 @@ function Ventas() {
 
                                 <input
                                     type="number"
-                                    min="1"
                                     className="form-control"
+                                    min="1"
                                     value={cantidad}
                                     onChange={(e) =>
-                                        setCantidad(e.target.value)
+                                        setCantidad(Number(e.target.value))
                                     }
-                                />
-
-                            </div>
-
-
-                            {/* PRECIO UNITARIO */}
-
-                            <div className="col-md-6 mb-3">
-
-                                <label className="form-label">
-                                    Precio unitario
-                                </label>
-
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    value={
-                                        postre
-                                            ? `S/ ${precioUnitario.toFixed(2)}`
-                                            : "—"
-                                    }
-                                    readOnly
                                 />
 
                             </div>
@@ -199,9 +169,10 @@ function Ventas() {
                             <div className="col-12">
 
                                 <button
-                                    className="btn ventas-btn-registrar"
+                                    type="button"
+                                    className="ventas-btn-registrar"
                                     onClick={registrarVenta}
-                                    disabled={postreSeleccionado === ""}
+                                    disabled={!postreSeleccionado}
                                 >
                                     Registrar Venta
                                 </button>
@@ -221,19 +192,17 @@ function Ventas() {
 
                     <div className="ventas-card ventas-resumen">
 
-                        <h6>
-                            RESUMEN
-                        </h6>
+                        <h6>RESUMEN</h6>
 
 
                         <div className="resumen-fila">
 
-                            <span>
-                                Postre
-                            </span>
+                            <span>Postre</span>
 
                             <strong>
-                                {postre ? postre.nombre : "—"}
+                                {postre
+                                    ? postre.nombre
+                                    : "—"}
                             </strong>
 
                         </div>
@@ -241,9 +210,7 @@ function Ventas() {
 
                         <div className="resumen-fila">
 
-                            <span>
-                                Cantidad
-                            </span>
+                            <span>Cantidad</span>
 
                             <strong>
                                 {cantidad}
@@ -254,15 +221,10 @@ function Ventas() {
 
                         <div className="resumen-fila">
 
-                            <span>
-                                Precio unit.
-                            </span>
+                            <span>Precio unit.</span>
 
                             <strong>
-                                {postre
-                                    ? `S/ ${precioUnitario.toFixed(2)}`
-                                    : "—"
-                                }
+                                S/ {precioUnitario.toFixed(2)}
                             </strong>
 
                         </div>
