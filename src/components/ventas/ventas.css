@@ -34,6 +34,7 @@
     border: 1px solid #dddddd;
     border-radius: 8px;
     min-height: 42px;
+    color: #222222 !important;
 }
 
 .form-control:focus,

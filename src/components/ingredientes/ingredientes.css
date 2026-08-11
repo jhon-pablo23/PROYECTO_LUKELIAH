@@ -83,7 +83,8 @@
     border-radius: 6px;
     outline: none;
     font-size: 14px;
-    background-color: #ffffff;
+    background-color: #fdf8f8;
+    color: #222222 !important;
 }
 
 .campo input:focus,

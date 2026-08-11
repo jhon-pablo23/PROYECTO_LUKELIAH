@@ -97,6 +97,10 @@
     width: 100%;
 }
 
+.buscar-usuario,
+.form-control {
+    color: #222222 !important;
+}
 
 /* BOTONES DEL FORMULARIO */
 
