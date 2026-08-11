@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import api from "../../api/axios";
 import "./usuarios.css";
 
 function Usuarios() {
@@ -9,15 +10,22 @@ function Usuarios() {
     const [buscar, setBuscar] = useState("");
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
-    const [usuarios, setUsuarios] = useState([
-        {
-            id: 1,
-            nombre: "Administrador",
-            correo: "admin@lukeliah.com"
-        }
-    ]);
+    const [usuarios, setUsuarios] = useState([]);
 
-    function agregarUsuario(evento) {
+    useEffect(() => {
+        cargarUsuarios();
+    }, []);
+
+    async function cargarUsuarios() {
+        try {
+            const respuesta = await api.get("/usuarios/");
+            setUsuarios(respuesta.data);
+        } catch (error) {
+            console.error("Error al cargar usuarios:", error);
+        }
+    }
+
+    async function agregarUsuario(evento) {
         evento.preventDefault();
 
         if (nombre === "" || correo === "" || contrasena === "") {
@@ -26,18 +34,37 @@ function Usuarios() {
         }
 
         const nuevoUsuario = {
-            id: usuarios.length + 1,
             nombre: nombre,
-            correo: correo
+            correo: correo,
+            contrasena: contrasena
         };
 
-        setUsuarios([...usuarios, nuevoUsuario]);
+        try {
+            const respuesta = await api.post(
+                "/usuarios/",
+                nuevoUsuario
+            );
 
-        setNombre("");
-        setCorreo("");
-        setContrasena("");
+            setUsuarios([...usuarios, respuesta.data]);
 
-        setMostrarFormulario(false);
+            setNombre("");
+            setCorreo("");
+            setContrasena("");
+
+            setMostrarFormulario(false);
+
+        } catch (error) {
+            console.error("Error al crear usuario:", error);
+
+            if (error.response && error.response.data) {
+                alert(
+                    error.response.data.detail ||
+                    "No se pudo crear el usuario."
+                );
+            } else {
+                alert("No se pudo crear el usuario.");
+            }
+        }
     }
 
     function eliminarUsuario(id) {
