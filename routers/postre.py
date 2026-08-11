@@ -51,12 +51,12 @@ def obtener_postre(id_postre: int):
 )
 def crear_postre(datos: PostreCrear):
     postre = Postre(
-        datos.id_receta,
-        datos.nombre,
-        datos.precio,
-        datos.imagen
-    )
-
+    datos.nombre,
+    datos.precio,
+    datos.id_receta,
+    datos.imagen
+)
+    
     nuevo = dao.insertar(postre)
 
     return nuevo.to_dict()
