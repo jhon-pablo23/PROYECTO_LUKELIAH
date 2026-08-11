@@ -7,37 +7,88 @@ Kelly Sanchez / kelly@gmail.com  / 123456789@
 
 Nombre: Harina
 Unidad de medida: kg
-Stock actual: 50
-Stock mínimo: 5
+Stock actual: 10
+Stock mínimo: 2
 Costo: 5.00
 
 Nombre: Azúcar
 Unidad de medida: kg
-Stock actual: 30
-Stock mínimo: 5
-Costo: 4.50
+Stock actual: 10
+Stock mínimo: 2
+Costo: 4.00
 
-Nombre: Huevos
+Nombre: Huevo
 Unidad de medida: unidad
-Stock actual: 60
+Stock actual: 30
 Stock mínimo: 10
 Costo: 0.80
 
 Nombre: Leche
-Unidad de medida: litro
-Stock actual: 20
-Stock mínimo: 5
-Costo: 4.50
+Unidad de medida: L
+Stock actual: 10
+Stock mínimo: 2
+Costo: 5.00
 
-Nombre: Chocolate
-Unidad de medida: kg
-Stock actual: 15
-Stock mínimo: 3
-Costo: 18.00
+Nombre: Aceite
+Unidad de medida: ml
+Stock actual: 5000
+Stock mínimo: 1000
+Costo: 8.00
 
-        📖 RECETAS — 5 registros
+        2. RECETA: TORTA DE CHOCOLATE
 Nombre: Torta de Chocolate
+Porciones: 8
+Procedimiento: Mezclar los ingredientes secos. Agregar los huevos, la leche y el aceite. Mezclar hasta obtener una masa uniforme. Colocar en un molde y hornear hasta que la torta esté lista.
 
-Nombre: Pie de Limón
+Ingredientes
+Ingrediente	Cantidad
+Harina	0.5 kg
+Azúcar	0.3 kg
+Huevo	3 unidades
+Leche	0.25 L
+Aceite	100 ml
 
-Nombre: Cheesecake de Fresa
+
+    3. RECETA: CREMA VOLTEADA
+Datos principales
+Nombre: Crema Volteada
+Porciones: 6
+Procedimiento: Batir los huevos con el azúcar. Agregar la leche y mezclar hasta obtener una preparación uniforme. Colocar en un molde previamente acaramelado y cocinar hasta que la crema esté firme. Dejar enfriar y desmoldar.
+Ingredientes
+Ingrediente	Cantidad
+Azúcar	0.2 kg
+Huevo	4 unidades
+Leche	0.5 L
+
+    4. RECETA: KEKE DE NARANJA
+Datos principales
+Nombre: Keke de Naranja
+Porciones: 8
+Procedimiento: Mezclar la harina y el azúcar. Agregar los huevos, la leche y el aceite. Mezclar hasta obtener una masa uniforme y agregar el jugo de naranja. Colocar en un molde y hornear hasta que esté listo.
+Ingredientes
+Ingrediente	Cantidad
+Harina	0.5 kg
+Azúcar	0.3 kg
+Huevo	3 unidades
+Leche	0.2 L
+Aceite	100 ml
+
+
+    5. POSTRES
+Postre 1
+Nombre: Torta de Chocolate
+Precio: 25.00
+Receta: Torta de Chocolate
+Imagen: torta-de-chocolate.jpg
+
+Postre 2
+Nombre: Crema Volteada
+Precio: 18.00
+Receta: Crema Volteada
+Imagen: crema-volteada.jpg
+
+Postre 3
+Nombre: Keke de Naranja
+Precio: 20.00
+Receta: Keke de Naranja
+Imagen: keke-de-naranja.jpg
