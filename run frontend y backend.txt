@@ -1,0 +1,11 @@
+
+Backend — PowerShell 1
+cd D:\PROYECTO_LUKELIAH
+python -m uvicorn main:app --reload
+
+
+Frontend — PowerShell 2
+cd D:\PROYECTO_LUKELIAH\frontend
+npm run dev
+
+
