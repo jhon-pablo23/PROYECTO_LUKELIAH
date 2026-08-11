@@ -69,243 +69,247 @@ function Usuarios() {
                     "No se pudo conectar con el backend."
                 );
             }
+
+
         }
 
-        function eliminarUsuario(id) {
-            const listaNueva = usuarios.filter(
-                (usuario) => usuario.id !== id
-            );
+    }
 
-            setUsuarios(listaNueva);
-        }
-
-        const usuariosFiltrados = usuarios.filter((usuario) =>
-            usuario.nombre.toLowerCase().includes(buscar.toLowerCase()) ||
-            usuario.correo.toLowerCase().includes(buscar.toLowerCase())
+    function eliminarUsuario(id) {
+        const listaNueva = usuarios.filter(
+            (usuario) => usuario.id !== id
         );
 
-        return (
-            <div className="usuarios">
+        setUsuarios(listaNueva);
+    }
 
-                {/* ENCABEZADO */}
+    const usuariosFiltrados = usuarios.filter((usuario) =>
+        usuario.nombre.toLowerCase().includes(buscar.toLowerCase()) ||
+        usuario.correo.toLowerCase().includes(buscar.toLowerCase())
+    );
 
-                <div className="usuarios-header">
+    return (
+        <div className="usuarios">
 
-                    <div>
-                        <h1>Usuarios</h1>
-                        <p>Gestiona los administradores de LUKELIAH</p>
-                    </div>
+            {/* ENCABEZADO */}
 
-                    <button
-                        type="button"
-                        className="btn-nuevo-usuario"
-                        onClick={() =>
-                            setMostrarFormulario(!mostrarFormulario)
-                        }
-                    >
-                        Nuevo Usuario
-                    </button>
+            <div className="usuarios-header">
 
+                <div>
+                    <h1>Usuarios</h1>
+                    <p>Gestiona los administradores de LUKELIAH</p>
                 </div>
 
+                <button
+                    type="button"
+                    className="btn-nuevo-usuario"
+                    onClick={() =>
+                        setMostrarFormulario(!mostrarFormulario)
+                    }
+                >
+                    Nuevo Usuario
+                </button>
 
-                {/* BUSCADOR */}
-
-                <div className="usuarios-toolbar">
-
-                    <input
-                        type="text"
-                        className="buscar-usuario"
-                        placeholder="Buscar usuarios..."
-                        value={buscar}
-                        onChange={(evento) =>
-                            setBuscar(evento.target.value)
-                        }
-                    />
-
-                </div>
+            </div>
 
 
-                {/* FORMULARIO */}
+            {/* BUSCADOR */}
 
-                {mostrarFormulario && (
+            <div className="usuarios-toolbar">
 
-                    <div className="usuario-form-card">
+                <input
+                    type="text"
+                    className="buscar-usuario"
+                    placeholder="Buscar usuarios..."
+                    value={buscar}
+                    onChange={(evento) =>
+                        setBuscar(evento.target.value)
+                    }
+                />
 
-                        <h2>Nuevo usuario</h2>
-
-                        <form onSubmit={agregarUsuario}>
-
-                            <div className="form-row">
-
-                                <div className="form-group">
-
-                                    <label>Nombre</label>
-
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        value={nombre}
-                                        onChange={(evento) =>
-                                            setNombre(evento.target.value)
-                                        }
-                                        placeholder="Ingrese el nombre"
-                                    />
-
-                                </div>
+            </div>
 
 
-                                <div className="form-group">
+            {/* FORMULARIO */}
 
-                                    <label>Correo</label>
+            {mostrarFormulario && (
 
-                                    <input
-                                        type="email"
-                                        className="form-control"
-                                        value={correo}
-                                        onChange={(evento) =>
-                                            setCorreo(evento.target.value)
-                                        }
-                                        placeholder="correo@ejemplo.com"
-                                    />
+                <div className="usuario-form-card">
 
-                                </div>
+                    <h2>Nuevo usuario</h2>
 
+                    <form onSubmit={agregarUsuario}>
 
-                                <div className="form-group">
+                        <div className="form-row">
 
-                                    <label>Contrasena</label>
+                            <div className="form-group">
 
-                                    <input
-                                        type="password"
-                                        className="form-control"
-                                        value={contrasena}
-                                        onChange={(evento) =>
-                                            setContrasena(evento.target.value)
-                                        }
-                                        placeholder="Ingrese la contrasena"
-                                    />
+                                <label>Nombre</label>
 
-                                </div>
-
-                            </div>
-
-
-                            <div className="form-buttons">
-
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary"
-                                >
-                                    Crear usuario
-                                </button>
-
-                                <button
-                                    type="button"
-                                    className="btn btn-secondary"
-                                    onClick={() =>
-                                        setMostrarFormulario(false)
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    value={nombre}
+                                    onChange={(evento) =>
+                                        setNombre(evento.target.value)
                                     }
-                                >
-                                    Cancelar
-                                </button>
+                                    placeholder="Ingrese el nombre"
+                                />
 
                             </div>
 
-                        </form>
 
-                    </div>
+                            <div className="form-group">
 
-                )}
+                                <label>Correo</label>
 
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    value={correo}
+                                    onChange={(evento) =>
+                                        setCorreo(evento.target.value)
+                                    }
+                                    placeholder="correo@ejemplo.com"
+                                />
 
-                {/* LISTA DE USUARIOS */}
-
-                <div className="usuarios-table-card">
-
-                    <h2>Lista de usuarios</h2>
-
-                    <div className="table-responsive">
-
-                        <table className="table table-hover">
-
-                            <thead>
-
-                                <tr>
-                                    <th>USUARIO</th>
-                                    <th>CORREO</th>
-                                    <th>ACCIONES</th>
-                                </tr>
-
-                            </thead>
+                            </div>
 
 
-                            <tbody>
+                            <div className="form-group">
 
-                                {usuariosFiltrados.length > 0 ? (
+                                <label>Contrasena</label>
 
-                                    usuariosFiltrados.map((usuario) => (
+                                <input
+                                    type="password"
+                                    className="form-control"
+                                    value={contrasena}
+                                    onChange={(evento) =>
+                                        setContrasena(evento.target.value)
+                                    }
+                                    placeholder="Ingrese la contrasena"
+                                />
 
-                                        <tr key={usuario.id}>
+                            </div>
 
-                                            <td>
-                                                {usuario.nombre}
-                                            </td>
+                        </div>
 
-                                            <td>
-                                                {usuario.correo}
-                                            </td>
 
-                                            <td>
+                        <div className="form-buttons">
 
-                                                <button
-                                                    className="btn btn-warning btn-sm me-2"
-                                                    type="button"
-                                                >
-                                                    Editar
-                                                </button>
+                            <button
+                                type="submit"
+                                className="btn btn-primary"
+                            >
+                                Crear usuario
+                            </button>
 
-                                                <button
-                                                    className="btn btn-danger btn-sm"
-                                                    type="button"
-                                                    onClick={() =>
-                                                        eliminarUsuario(usuario.id)
-                                                    }
-                                                >
-                                                    Eliminar
-                                                </button>
+                            <button
+                                type="button"
+                                className="btn btn-secondary"
+                                onClick={() =>
+                                    setMostrarFormulario(false)
+                                }
+                            >
+                                Cancelar
+                            </button>
 
-                                            </td>
+                        </div>
 
-                                        </tr>
+                    </form>
 
-                                    ))
+                </div>
 
-                                ) : (
+            )}
 
-                                    <tr>
 
-                                        <td
-                                            colSpan="3"
-                                            className="sin-resultados"
-                                        >
-                                            No se encontraron usuarios.
+            {/* LISTA DE USUARIOS */}
+
+            <div className="usuarios-table-card">
+
+                <h2>Lista de usuarios</h2>
+
+                <div className="table-responsive">
+
+                    <table className="table table-hover">
+
+                        <thead>
+
+                            <tr>
+                                <th>USUARIO</th>
+                                <th>CORREO</th>
+                                <th>ACCIONES</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {usuariosFiltrados.length > 0 ? (
+
+                                usuariosFiltrados.map((usuario) => (
+
+                                    <tr key={usuario.id}>
+
+                                        <td>
+                                            {usuario.nombre}
+                                        </td>
+
+                                        <td>
+                                            {usuario.correo}
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                                className="btn btn-warning btn-sm me-2"
+                                                type="button"
+                                            >
+                                                Editar
+                                            </button>
+
+                                            <button
+                                                className="btn btn-danger btn-sm"
+                                                type="button"
+                                                onClick={() =>
+                                                    eliminarUsuario(usuario.id)
+                                                }
+                                            >
+                                                Eliminar
+                                            </button>
+
                                         </td>
 
                                     </tr>
 
-                                )}
+                                ))
 
-                            </tbody>
+                            ) : (
 
-                        </table>
+                                <tr>
 
-                    </div>
+                                    <td
+                                        colSpan="3"
+                                        className="sin-resultados"
+                                    >
+                                        No se encontraron usuarios.
+                                    </td>
+
+                                </tr>
+
+                            )}
+
+                        </tbody>
+
+                    </table>
 
                 </div>
 
             </div>
-        );
-    }
 
-    export default Usuarios;
+        </div>
+    );
+}
+
+export default Usuarios;
