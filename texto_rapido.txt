@@ -1,0 +1,43 @@
+        👤 USUARIOS — 5 registros
+Jhon Anchayhua / jhon@gmail.com  / 123456789@
+Patricia Anchayhua / jhon@gmail.com  / 123456789@
+Kelly Sanchez / kelly@gmail.com  / 123456789@
+
+        🧂 INGREDIENTES — 5 registros
+
+Nombre: Harina
+Unidad de medida: kg
+Stock actual: 50
+Stock mínimo: 5
+Costo: 5.00
+
+Nombre: Azúcar
+Unidad de medida: kg
+Stock actual: 30
+Stock mínimo: 5
+Costo: 4.50
+
+Nombre: Huevos
+Unidad de medida: unidad
+Stock actual: 60
+Stock mínimo: 10
+Costo: 0.80
+
+Nombre: Leche
+Unidad de medida: litro
+Stock actual: 20
+Stock mínimo: 5
+Costo: 4.50
+
+Nombre: Chocolate
+Unidad de medida: kg
+Stock actual: 15
+Stock mínimo: 3
+Costo: 18.00
+
+        📖 RECETAS — 5 registros
+Nombre: Torta de Chocolate
+
+Nombre: Pie de Limón
+
+Nombre: Cheesecake de Fresa

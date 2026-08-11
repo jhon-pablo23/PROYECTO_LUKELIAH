@@ -8,4 +8,8 @@ Frontend — PowerShell 2
 cd D:\PROYECTO_LUKELIAH\frontend
 npm run dev
 
-
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+--luego crear la base de datos postgre
+python -m uvicorn main:app --reload
